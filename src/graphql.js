@@ -19,7 +19,7 @@ const SendQuery = async (QueryName, variables = null, preset = false) => {
     let body = { variables };
 
     if (!preset) {
-        body.query = fs.readFileSync(`./queries/${QueryName}.gql`, "UTF-8");
+        body.query = fs.readFileSync(`${__dirname}/../queries/${QueryName}.gql`, "UTF-8");
     }
     else {
         body.operationName = QueryName;
@@ -51,7 +51,7 @@ const SendQuery = async (QueryName, variables = null, preset = false) => {
             }
         }
 
-        fs.writeFileSync(`./outputs/${QueryName}.json`, JSON.stringify(data, null, 4))
+        fs.writeFileSync(`${__dirname}/../outputs/${QueryName}.json`, JSON.stringify(data, null, 4))
 
         return data;
     });
