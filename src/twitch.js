@@ -18,6 +18,17 @@ const Twitch = {
             ...variables
         }
         return GraphQL.SendQuery("FilterableVideoTower_Videos", opts, true);
+    },
+    GetPlaybackAccessToken(vodID, variables = {}) {
+        let opts = {
+            isLive: false,
+            isVod: true,
+            login: "",
+            playerType: "channel_home_carousel",
+            vodID: vodID,
+            ...variables
+        };
+        return GraphQL.SendQuery("PlaybackAccessToken", opts, true);
     }
 };
 
