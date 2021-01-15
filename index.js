@@ -1,3 +1,3 @@
-const Twitch = require("src/twitch");
+const Twitch = require("./src/twitch");
 
 module.exports = Twitch;
