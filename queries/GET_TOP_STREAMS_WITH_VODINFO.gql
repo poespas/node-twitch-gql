@@ -1,0 +1,34 @@
+query GetTopStreams($amount: Int!, $after: Cursor!) {
+  streams(first: $amount, after: $after) {
+    edges {
+      cursor
+      node {
+        id
+        title
+        viewersCount
+        language
+        broadcaster {
+          displayName
+          videos {
+            totalCount
+            edges {
+               node {
+                id
+                lengthSeconds
+                title
+                publishedAt
+                viewCount
+                game {
+                  name
+                }
+              }
+            }
+          }
+        }
+        game {
+          name
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "@poespas/twitch-gql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poespas/twitch-gql.git"
+  },
+  "author": "poespas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/poespas/twitch-gql/issues"
+  },
+  "homepage": "https://github.com/poespas/twitch-gql#readme"
+}
