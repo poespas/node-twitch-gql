@@ -1,9 +1,6 @@
 const fetch = require("node-fetch");
 const fs = require("fs");
 
-const Endpoint = "https://gql.twitch.tv/gql";
-const ClientID = "kimne78kx3ncx6brgo4mv6wki5h1ko";
-
 const Operation_Hashes = {
     'CollectionSideBar': '27111f1b382effad0b6def325caef1909c733fe6a4fbabf54f8d491ef2cf2f14',
     'FilterableVideoTower_Videos': 'a937f1d22e269e39a03b509f65a7490f9fc247d7f83d6ac1421523e3b68042cb',
@@ -15,46 +12,55 @@ const Operation_Hashes = {
     'PlaybackAccessToken': '0828119ded1c13477966434e15800ff57ddacf13ba1911c129dc2200705b0712'
 };
 
-const SendQuery = async (QueryName, variables = null, preset = false) => {
-    let body = { variables };
+const GraphQL = {
+    Endpoint: "https://gql.twitch.tv/gql",
+    ClientID: null,
 
-    if (!preset) {
-        body.query = fs.readFileSync(`${__dirname}/../queries/${QueryName}.gql`, "UTF-8");
-    }
-    else {
-        body.operationName = QueryName;
-        body.extensions = {
-            "persistedQuery": {
-                "version":1,
-                "sha256Hash": Operation_Hashes[QueryName]
-            }
-        };
-        body = [body];
-    }
+    SendQuery: async (QueryName, variables = null, preset = false) => {
+        let body = { variables };
     
-    return fetch(Endpoint, {
-        method: "POST",
-        headers: {
-            "Content-Type": "text/plain;charset=UTF-8",
-            "Client-Id": ClientID
-        },
-        body: JSON.stringify(body),
-    })
-    .then((r) => r.json())
-    .then((data) => {
-        if (data.errors || (data[0] && data[0].errors)) {
-            let errs = data.length ? data[0].errors : data.errors;
-            for (let i = 0; i < errs.length; i++) {
-                const err = errs[i];
-                console.log("ERROR!");
-                console.log(err);
-            }
+        if (!GraphQL.ClientID)
+            throw "Please make sure to fill in a ClientID";
+    
+        if (!preset) {
+            body.query = fs.readFileSync(`${__dirname}/../queries/${QueryName}.gql`, "UTF-8");
         }
+        else {
+            body.operationName = QueryName;
+            body.extensions = {
+                "persistedQuery": {
+                    "version":1,
+                    "sha256Hash": Operation_Hashes[QueryName]
+                }
+            };
+            body = [body];
+        }
+        
+        return fetch(GraphQL.Endpoint, {
+            method: "POST",
+            headers: {
+                "Content-Type": "text/plain;charset=UTF-8",
+                "Client-Id": GraphQL.ClientID
+            },
+            body: JSON.stringify(body),
+        })
+        .then((r) => r.json())
+        .then((data) => {
+            if (data.errors || (data[0] && data[0].errors)) {
+                let errs = data.length ? data[0].errors : data.errors;
+                for (let i = 0; i < errs.length; i++) {
+                    const err = errs[i];
+                    console.log("ERROR!");
+                    console.log(err);
+                }
+            }
+    
+            fs.writeFileSync(`${__dirname}/../outputs/${QueryName}.json`, JSON.stringify(data, null, 4))
+    
+            return data;
+        });
+    }
+}
 
-        fs.writeFileSync(`${__dirname}/../outputs/${QueryName}.json`, JSON.stringify(data, null, 4))
 
-        return data;
-    });
-};
-
-module.exports = { SendQuery };
+module.exports = GraphQL;

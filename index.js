@@ -1,3 +1,16 @@
-const Twitch = require("./src/twitch");
+const TwitchGQL = { 
+    client: require("./src/twitch"),
+    isInitialized: false,
 
-module.exports = Twitch;
+    Init: (ClientID) => {
+        if (TwitchGQL.isInitialized)
+            return TwitchGQL.client;
+
+        TwitchGQL.client.SetClientID(ClientID);
+        TwitchGQL.isInitialized = true;
+
+        return TwitchGQL.client;
+    }
+}
+
+module.exports = TwitchGQL;

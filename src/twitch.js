@@ -1,6 +1,9 @@
 const GraphQL = require("./graphql");
 
 const Twitch = {
+    SetClientID(ClientID) {
+        GraphQL.ClientID = ClientID;
+    },
     GetUser(login, variables = {}) {
         variables = {...variables, login};
         return GraphQL.SendQuery("GET_USER", variables);
