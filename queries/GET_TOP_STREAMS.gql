@@ -9,18 +9,6 @@ query GetTopStreams($amount: Int!, $after: Cursor!) {
         language
         broadcaster {
           displayName
-          videos {
-            totalCount
-          }
-          clips {
-            edges {
-              node {
-                id
-                title
-                viewCount
-              }
-            }
-          }
         }
         tags {
           id
