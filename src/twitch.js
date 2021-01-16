@@ -32,6 +32,9 @@ const Twitch = {
             ...variables
         };
         return GraphQL.SendQuery("PlaybackAccessToken", opts, true);
+    },
+    _SendQuery(QueryName, variables = null, preset = false) {
+        return GraphQL.SendQuery(QueryName, variables, preset);
     }
 };
 
