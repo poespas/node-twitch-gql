@@ -9,10 +9,9 @@ Install it from [npm](https://www.npmjs.com/package/twitch-gql):
     $ npm install twitch-gql
 
 # Contents
-- [How to use](#how-to-use-)
-- [Methods](#methods-)
-- [About](#about-)
-
+- [How to use](#how-to-use)
+- [Methods](#methods)
+- [About](#about)
 
 # How to use
 
