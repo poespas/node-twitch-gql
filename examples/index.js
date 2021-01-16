@@ -1,6 +1,4 @@
-const ClientID = "kimne78kx3ncx6brgo4mv6wki5h1ko";
-
-const TwitchGQL = require("..").Init(ClientID);
+const TwitchGQL = require("..").Init();
 
 (async () => {
     let CurrentTopStreams = await TwitchGQL.GetTopStreams();
