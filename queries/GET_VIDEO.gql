@@ -1,0 +1,10 @@
+query GetVideo($videoId: ID!) {
+    video(id: $videoId) {
+        id
+        title
+        game {
+            id
+            name
+        }
+    }
+}
