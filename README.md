@@ -60,6 +60,12 @@ Get a list of last broadcasts or videos from a broadcaster
 
 Get an access token and signature to use for an m3u8 playlist
 
+## GetVideoMoments(videoID)
+
+- `videoID` - The video ID you want to request the access token for
+
+Get highlights/game changes of a vod
+
 ## _SendQuery(QueryName, variables, preset)
 
 - `QueryName` - The name of a preset query in the `queries` directory  
