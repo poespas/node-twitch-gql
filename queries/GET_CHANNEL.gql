@@ -1,0 +1,15 @@
+query GetChannel($channelID: ID!) {
+    user(id: $channelID) {
+        videos {
+            edges {
+                node {
+                    id
+                    games {
+                        id
+                        name
+                    }
+                }
+            }
+        }
+    }
+}

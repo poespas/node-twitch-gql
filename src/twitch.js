@@ -33,6 +33,13 @@ const Twitch = {
         };
         return GraphQL.SendQuery("PlaybackAccessToken", opts, true);
     },
+    GetVideoMoments(vodID, variables = {}) {
+        let opts = {
+            videoId: vodID,
+            ...variables
+        };
+        return GraphQL.SendQuery("VideoPreviewCard__VideoMoments", opts, true);
+    },
     _SendQuery(QueryName, variables = null, preset = false) {
         return GraphQL.SendQuery(QueryName, variables, preset);
     }
