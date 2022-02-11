@@ -40,6 +40,14 @@ const Twitch = {
         };
         return GraphQL.SendQuery("VideoPreviewCard__VideoMoments", opts, true);
     },
+    GetVideoMetadata(channelLogin, vodID, variables = {}) {
+        let opts = {
+            channelLogin,
+            videoID: vodID,
+            ...variables
+        };
+        return GraphQL.SendQuery("VideoMetadata", opts, true);
+    },
     _SendQuery(QueryName, variables = null, preset = false) {
         return GraphQL.SendQuery(QueryName, variables, preset);
     }
