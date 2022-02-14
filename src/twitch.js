@@ -48,6 +48,13 @@ const Twitch = {
         };
         return GraphQL.SendQuery("VideoMetadata", opts, true);
     },
+    GetChatClip(clipSlug, variables = {}) {
+        let opts = {
+            clipSlug,
+            ...variables
+        };
+        return GraphQL.SendQuery("ChatClip", opts, true);
+    },
     _SendQuery(QueryName, variables = null, preset = false) {
         return GraphQL.SendQuery(QueryName, variables, preset);
     }
