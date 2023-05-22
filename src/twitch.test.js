@@ -5,6 +5,7 @@ const TestMisc = require("../.tests/misc");
 
 const USERS = ["Asmongold", "XQCOW", "Mizkif"];
 const VIDEOS = ["132195945", "1121890940"];
+const GAMES = ["Fallguys", "Destiny 2"];
 const CLIPS = ["OutstandingUninterestedNewtCeilingCat-hY-I9SEIwIbTitYJ"];
 
 // START OPERATIONS
@@ -206,6 +207,32 @@ describe("Operations", () => {
             let video_metadata = data[0].data;
 
             TestMisc.CheckModel(video_metadata, VideoMetadataModel);
+
+            done();
+        })();
+    });
+
+    test("GetGameCategoryTags", (done) => {
+        const GameCategoryTagsMetadataModel = {
+            game: {
+                __typename: String,
+                id: String,
+                tags: {
+                    0: {
+                        __typename: String,
+                        id: String,
+                        tagName: String,
+                        localizedName: String
+                    }
+                }
+            }
+        };
+
+        (async () => {
+            let data = await TwitchGQL.GetGameCategoryTags(GAMES[1]);
+            let game_category_tags_metadata = data[0].data;
+
+            TestMisc.CheckModel(game_category_tags_metadata, GameCategoryTagsMetadataModel);
 
             done();
         })();

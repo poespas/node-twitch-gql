@@ -48,6 +48,14 @@ const Twitch = {
         };
         return GraphQL.SendQuery("VideoMetadata", opts, true);
     },
+    GetGameCategoryTags(gameName, variables = {}) {
+        let opts = {
+            gameName,
+            tagType: "CONTENT",
+            ...variables
+        };
+        return GraphQL.SendQuery("CategoryTags", opts, true);
+    },
     GetChatClip(clipSlug, variables = {}) {
         let opts = {
             clipSlug,
