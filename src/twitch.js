@@ -9,8 +9,13 @@ const Twitch = {
         return GraphQL.SendQuery("GET_USER", variables);
     },
     GetTopStreams(amount = 25, variables = {}) {
-        variables = {after: "", ...variables, amount};
-        return GraphQL.SendQuery("GET_TOP_STREAMS", variables);
+        variables = {
+            limit: amount,
+            platformType: "all",
+            sortTypeIsRecency: false,
+            ...variables
+        };
+        return GraphQL.SendQuery("AllChannels_InternationalSection", variables, true);
     },
     GetVideos(login, variables = {}) {
         let opts = {

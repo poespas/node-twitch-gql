@@ -3,10 +3,10 @@ const { test, expect, describe } = require("@jest/globals");
 const TwitchGQL = require("..").Init();
 const TestMisc = require("../.tests/misc");
 
-const USERS = ["Asmongold", "XQCOW", "Mizkif"];
+const USERS = ["Asmongold", "xqc", "Mizkif"];
 const VIDEOS = ["132195945", "1121890940"];
 const GAMES = ["Fallguys", "Destiny 2"];
-const CLIPS = ["OutstandingUninterestedNewtCeilingCat-hY-I9SEIwIbTitYJ"];
+const CLIPS = ["AnimatedBlueTurtleBabyRage"];
 
 // START OPERATIONS
 describe("Operations", () => {
@@ -38,19 +38,21 @@ describe("Operations", () => {
             id: String,
             title: String,
             viewersCount: Number,
-            language: String,
             broadcaster: {
+                id: String,
+                login: String,
                 displayName: String,
             },
-            tags: Array,
+            freeformTags: Array,
             game: {
+                id: String,
                 name: String,
             },
         };
 
         (async () => {
             let data = await TwitchGQL.GetTopStreams(10);
-            let streams = data.data.streams.edges.map((i) => i.node);
+            let streams = data[0].data.streams.edges.map((i) => i.node);
 
             expect(streams.length).toBe(10);
 
