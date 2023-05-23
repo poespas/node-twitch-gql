@@ -10,10 +10,10 @@ const Twitch = {
     },
     GetTopStreams(amount = 25, variables = {}) {
         variables = {
-            ...variables,
             limit: amount,
             platformType: "all",
-            sortTypeIsRecency: false
+            sortTypeIsRecency: false,
+            ...variables
         };
         return GraphQL.SendQuery("AllChannels_InternationalSection", variables, true);
     },
