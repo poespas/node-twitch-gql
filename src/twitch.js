@@ -68,6 +68,18 @@ const Twitch = {
         };
         return GraphQL.SendQuery("ChatClip", opts, true);
     },
+    GetClipsCardsUser(login, filter = "ALL_TIME", limit = 20) {
+        const variables = {
+            login: login,
+            limit: limit,
+            criteria: {
+                filter: filter,
+                shouldFilterByDiscoverySetting: true
+            },
+            cursor: null
+        };
+        return GraphQL.SendQuery("ClipsCards__User", variables, true);
+    },
     _SendQuery(QueryName, variables = null, preset = false) {
         return GraphQL.SendQuery(QueryName, variables, preset);
     }

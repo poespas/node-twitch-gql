@@ -13,8 +13,9 @@ const Operation_Hashes = {
     'VideoPreviewCard__VideoMoments': '0094e99aab3438c7a220c0b1897d144be01954f8b4765b884d330d0c0893dbde',
     'VideoMetadata': 'cb3b1eb2f2d2b2f65b8389ba446ec521d76c3aa44f5424a1b1d235fe21eb4806',
     'ChatClip': '9aa558e066a22227c5ef2c0a8fded3aaa57d35181ad15f63df25bff516253a90',
-    "CategoryTags": "5e639384467cb410fda19531971c8856cf937eb69209a6859fa17fddfce7ee07",
-    "AllChannels_InternationalSection": "b4706651ded417d9a34ae91c049197c016c496bfdfd58aeb4a5d2dfbb0dcc9e1"
+    'CategoryTags': "5e639384467cb410fda19531971c8856cf937eb69209a6859fa17fddfce7ee07",
+    'AllChannels_InternationalSection': "b4706651ded417d9a34ae91c049197c016c496bfdfd58aeb4a5d2dfbb0dcc9e1",
+    'ClipsCards__User': "4eb8f85fc41a36c481d809e8e99b2a32127fdb7647c336d27743ec4a88c4ea44"
 };
 
 const GraphQL = {
