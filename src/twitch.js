@@ -80,6 +80,18 @@ const Twitch = {
         };
         return GraphQL.SendQuery("ClipsCards__User", variables, true);
     },
+    GetClipMetadata(clipSlug) {
+        const variables = {
+            clipSlug
+        };
+        return GraphQL.SendQuery("ClipMetadata", variables, true);
+    },
+    GetShareClipRenderStatus(slug) {
+        const variables = {
+            slug
+        };
+        return GraphQL.SendQuery("ShareClipRenderStatus", variables, true);
+    },
     _SendQuery(QueryName, variables = null, preset = false) {
         return GraphQL.SendQuery(QueryName, variables, preset);
     }

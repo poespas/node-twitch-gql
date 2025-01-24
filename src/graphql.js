@@ -15,7 +15,9 @@ const Operation_Hashes = {
     'ChatClip': '9aa558e066a22227c5ef2c0a8fded3aaa57d35181ad15f63df25bff516253a90',
     'CategoryTags': "5e639384467cb410fda19531971c8856cf937eb69209a6859fa17fddfce7ee07",
     'AllChannels_InternationalSection': "b4706651ded417d9a34ae91c049197c016c496bfdfd58aeb4a5d2dfbb0dcc9e1",
-    'ClipsCards__User': "4eb8f85fc41a36c481d809e8e99b2a32127fdb7647c336d27743ec4a88c4ea44"
+    'ClipsCards__User': "4eb8f85fc41a36c481d809e8e99b2a32127fdb7647c336d27743ec4a88c4ea44",
+    'ClipMetadata': '49817470e0129051cd93c86069aee755795f1a952688f0111bac71a49841ece7',
+    'ShareClipRenderStatus': 'f130048a462a0ac86bb54d653c968c514e9ab9ca94db52368c1179e97b0f16eb'
 };
 
 const GraphQL = {
