@@ -3,7 +3,7 @@ const { test, expect, describe } = require("@jest/globals");
 const TwitchGQL = require("..").Init();
 const TestMisc = require("../.tests/misc");
 
-const USERS = ["Asmongold", "xqc", "Mizkif"];
+const USERS = ["twitch"];
 const VIDEOS = ["132195945", "1121890940"];
 const GAMES = ["Fallguys", "Destiny 2"];
 const CLIPS = ["AnimatedBlueTurtleBabyRage"];
@@ -259,6 +259,133 @@ describe("Operations", () => {
             done();
         })();
     });
+
+    test("GetClipsCardsUser", (done) => {
+        const ClipsCardsUserModel = {
+            id: String,
+            slug: String,
+            url: String,
+            embedURL: String,
+            title: String,
+            viewCount: Number,
+            language: String,
+            // curator: {
+            //     id: String,
+            //     login: String,
+            //     displayName: String,
+            // },
+            // game: {
+            //     id: String,
+            //     slug: String,
+            //     name: String,
+            //     boxArtURL: String,
+            // },
+            broadcaster: {
+                id: String,
+                login: String,
+                displayName: String,
+                profileImageURL: String,
+                roles: {
+                    isPartner: Boolean,
+                }
+            },
+            thumbnailURL: String,
+            createdAt: String,
+            durationSeconds: Number,
+            isFeatured: Boolean,
+        };
+
+        (async () => {
+            let data = await TwitchGQL.GetClipsCardsUser(USERS[0]);
+            if (data && data[0] && data[0].data && data[0].data.user && data[0].data.user.clips) {
+                let clips = data[0].data.user.clips.edges.map((i) => i.node);
+
+                expect(clips.length).toBeGreaterThan(0);
+
+                for (let i = 0; i < clips.length; i++) {
+                    const clip = clips[i];
+
+                    TestMisc.CheckModel(clip, ClipsCardsUserModel);
+                }
+            } else {
+                throw new Error("Unexpected response structure");
+            }
+
+            done();
+        })();
+    });
+
+    test("GetClipMetadata", (done) => {
+        const ClipMetadataModel = {
+            id: String,
+        };
+
+        (async () => {
+            let data = await TwitchGQL.GetClipMetadata(CLIPS[0]);
+            if (data && data[0] && data[0].data && data[0].data.clip) {
+                let clip_metadata = data[0].data.clip;
+
+                TestMisc.CheckModel(clip_metadata, ClipMetadataModel);
+            } else {
+                throw new Error("Unexpected response structure");
+            }
+
+            done();
+        })();
+    });
+
+    test("GetShareClipRenderStatus", (done) => {
+        const ShareClipRenderStatusModel = {
+            id: String,
+            slug: String,
+            url: String,
+            embedURL: String,
+            title: String,
+            viewCount: Number,
+            language: String,
+            isFeatured: Boolean,
+            assets: Array,
+            curator: {
+                id: String,
+                login: String,
+                displayName: String,
+                profileImageURL: String
+            },
+            game: {
+                id: String,
+                name: String,
+                boxArtURL: String,
+                displayName: String,
+                slug: String
+            },
+            broadcaster: {
+                id: String,
+                login: String,
+                displayName: String,
+                primaryColorHex: String,
+                isPartner: Boolean,
+                profileImageURL: String
+            },
+            thumbnailURL: String,
+            createdAt: String,
+            isPublished: Boolean,
+            durationSeconds: Number,
+            videoQualities: Array
+        };
+
+        (async () => {
+            let data = await TwitchGQL.GetShareClipRenderStatus(CLIPS[0]);
+            if (data && data[0] && data[0].data && data[0].data.clip) {
+                let clip = data[0].data.clip;
+
+                TestMisc.CheckModel(clip, ShareClipRenderStatusModel);
+            } else {
+                throw new Error("Unexpected response structure");
+            }
+
+            done();
+        })();
+    });
 });
 // END OPERATIONS
 
@@ -281,9 +408,13 @@ describe("Queries", () => {
                 login: USERS[Math.round(Math.random() * (USERS.length - 1))],
             });
 
-            const user = data.data.user;
+            if (data && data.data && data.data.user) {
+                const user = data.data.user;
 
-            TestMisc.CheckModel(user, UserModel);
+                TestMisc.CheckModel(user, UserModel);
+            } else {
+                throw new Error("Unexpected response structure");
+            }
 
             done();
         })();
