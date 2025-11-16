@@ -2,7 +2,7 @@ const TwitchGQL = {
     client: require("./src/twitch"),
     isInitialized: false,
 
-    Init: (ClientID = "kimne78kx3ncx6brgo4mv6wki5h1ko") => {
+    Init: (ClientID = "ue6666qo983tsx6so1t0vnawi233wa") => {
         if (TwitchGQL.isInitialized)
             return TwitchGQL.client;
 

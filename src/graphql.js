@@ -2,22 +2,22 @@ const fetch = require("node-fetch");
 const fs = require("fs");
 
 const Operation_Hashes = {
-    'CollectionSideBar': '27111f1b382effad0b6def325caef1909c733fe6a4fbabf54f8d491ef2cf2f14',
-    'FilterableVideoTower_Videos': 'a937f1d22e269e39a03b509f65a7490f9fc247d7f83d6ac1421523e3b68042cb',
-    'ClipsCards__User': 'b73ad2bfaecfd30a9e6c28fada15bd97032c83ec77a0440766a56fe0bd632777',
-    'ChannelCollectionsContent': '07e3691a1bad77a36aba590c351180439a40baefc1c275356f40fc7082419a84',
-    'StreamMetadata': '1c719a40e481453e5c48d9bb585d971b8b372f8ebb105b17076722264dfa5b3e',
+    'CollectionSideBar': '016e1e4ccee0eb4698eb3bf1a04dc1c077fb746c78c82bac9a8f0289658fbd1a',
+    'FilterableVideoTower_Videos': '67004f7881e65c297936f32c75246470629557a393788fb5a69d6d9a25a8fd5f',
+    'ClipsCards__User': '90c33f5e6465122fba8f9371e2a97076f9ed06c6fed3788d002ab9eba8f91d88',
+    'ChannelCollectionsContent': '5247910a19b1cd2b760939bf4cba4dcbd3d13bdf8c266decd16956f6ef814077',
+    'StreamMetadata': 'b57f9b910f8cd1a4659d894fe7550ccc81ec9052c01e438b290fd66a040b9b93',
     'ComscoreStreamingQuery': 'e1edae8122517d013405f237ffcc124515dc6ded82480a88daef69c83b53ac01',
-    'VideoPreviewOverlay': '3006e77e51b128d838fa4e835723ca4dc9a05c5efd4466c1085215c6e437e65c',
+    'VideoPreviewOverlay': '9515480dee68a77e667cb19de634739d33f243572b007e98e67184b1a5d8369f',
     'PlaybackAccessToken': '0828119ded1c13477966434e15800ff57ddacf13ba1911c129dc2200705b0712',
     'VideoPreviewCard__VideoMoments': '0094e99aab3438c7a220c0b1897d144be01954f8b4765b884d330d0c0893dbde',
-    'VideoMetadata': 'cb3b1eb2f2d2b2f65b8389ba446ec521d76c3aa44f5424a1b1d235fe21eb4806',
+    'VideoMetadata': '45111672eea2e507f8ba44d101a61862f9c56b11dee09a15634cb75cb9b9084d',
     'ChatClip': '9aa558e066a22227c5ef2c0a8fded3aaa57d35181ad15f63df25bff516253a90',
     'CategoryTags': "5e639384467cb410fda19531971c8856cf937eb69209a6859fa17fddfce7ee07",
     'AllChannels_InternationalSection': "b4706651ded417d9a34ae91c049197c016c496bfdfd58aeb4a5d2dfbb0dcc9e1",
-    'ClipsCards__User': "4eb8f85fc41a36c481d809e8e99b2a32127fdb7647c336d27743ec4a88c4ea44",
     'ClipMetadata': '49817470e0129051cd93c86069aee755795f1a952688f0111bac71a49841ece7',
-    'ShareClipRenderStatus': 'f130048a462a0ac86bb54d653c968c514e9ab9ca94db52368c1179e97b0f16eb'
+    'ShareClipRenderStatus': '1844261bb449fa51e6167040311da4a7a5f1c34fe71c71a3e0c4f551bc30c698',
+    'VideoPlayer_ChapterSelectButtonVideo': '71835d5ef425e154bf282453a926d99b328cdc5e32f36d3a209d0f4778b41203'
 };
 
 const GraphQL = {
@@ -59,7 +59,9 @@ const GraphQL = {
                 for (let i = 0; i < errs.length; i++) {
                     const err = errs[i];
                     console.log("ERROR!");
-                    console.log(err);
+                    console.log({err});
+
+                    throw err;
                 }
             }
     
