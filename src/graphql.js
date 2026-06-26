@@ -9,7 +9,7 @@ const Operation_Hashes = {
     'StreamMetadata': 'b57f9b910f8cd1a4659d894fe7550ccc81ec9052c01e438b290fd66a040b9b93',
     'ComscoreStreamingQuery': '0f77ff1cc14693b042bda24d1f1677ea07c22a322f1343efb95b83f7d7918b4c',
     'VideoPreviewOverlay': '9515480dee68a77e667cb19de634739d33f243572b007e98e67184b1a5d8369f',
-    'PlaybackAccessToken': '0828119ded1c13477966434e15800ff57ddacf13ba1911c129dc2200705b0712',
+    'PlaybackAccessToken': 'ed230aa1e33e07eebb8928504583da78a5173989fadfb1ac94be06a04f3cdbe9',
     'VideoPreviewCard__VideoMoments': '7399051b2d46f528d5f0eedf8b0db8d485bb1bb4c0a2c6707be6f1290cdcb31a',
     'VideoMetadata': '45111672eea2e507f8ba44d101a61862f9c56b11dee09a15634cb75cb9b9084d',
     'ChatClip': '9aa558e066a22227c5ef2c0a8fded3aaa57d35181ad15f63df25bff516253a90',
@@ -17,7 +17,11 @@ const Operation_Hashes = {
     'AllChannels_InternationalSection': "b4706651ded417d9a34ae91c049197c016c496bfdfd58aeb4a5d2dfbb0dcc9e1",
     'ClipMetadata': '49817470e0129051cd93c86069aee755795f1a952688f0111bac71a49841ece7',
     'ShareClipRenderStatus': '1844261bb449fa51e6167040311da4a7a5f1c34fe71c71a3e0c4f551bc30c698',
-    'VideoPlayer_ChapterSelectButtonVideo': '71835d5ef425e154bf282453a926d99b328cdc5e32f36d3a209d0f4778b41203'
+    'VideoPlayer_ChapterSelectButtonVideo': '71835d5ef425e154bf282453a926d99b328cdc5e32f36d3a209d0f4778b41203',
+    'ChannelClipCore': 'd7807ec16a51f2bd8f70ee9d31de34b6059abb26b0fd58168cddbfc1938edac6',
+    'VideoAccessToken_Clip': '4f35f1ac933d76b1da008c806cd5546a7534dfaff83e033a422a81f24e5991b3',
+    'Settings_ChannelClipsSettings': '3fa280711bade651f09dc0dab6a8024d44421c184a2a586c73136109c3a0bfb9',
+    'FeedInteractionHook_GetClipBySlug': '8ed8cce33cf76b576a99dd8cd5db7cb6e7f0e6111bd1927b49c0cada0513d7b6'
 };
 
 const GraphQL = {

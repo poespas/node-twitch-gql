@@ -62,6 +62,7 @@ const Twitch = {
             isLive: false,
             isVod: true,
             login: "",
+            platform: "web",
             playerType: "channel_home_carousel",
             vodID: vodID,
             ...variables
@@ -165,6 +166,33 @@ const Twitch = {
             slug
         };
         return GraphQL.SendQuery("ShareClipRenderStatus", variables, true);
+    },
+    /**
+     * Get core clip data (replaces ClipMetadata)
+     * @param {string} clipSlug - The clip slug/ID
+     * @param {Object} [variables={}] - Additional query variables
+     * @returns {Promise<Object>} Clip core data
+     */
+    GetChannelClipCore(clipSlug, variables = {}) {
+        let opts = {
+            clipSlug,
+            ...variables
+        };
+        return GraphQL.SendQuery("ChannelClipCore", opts, true);
+    },
+    /**
+     * Get video access token for a clip
+     * @param {string} slug - The clip slug/ID
+     * @param {Object} [variables={}] - Additional query variables
+     * @returns {Promise<Object>} Clip video access token
+     */
+    GetVideoAccessTokenClip(slug, variables = {}) {
+        let opts = {
+            platform: "web",
+            slug,
+            ...variables
+        };
+        return GraphQL.SendQuery("VideoAccessToken_Clip", opts, true);
     },
     /**
      * Internal method to send a custom GraphQL query
